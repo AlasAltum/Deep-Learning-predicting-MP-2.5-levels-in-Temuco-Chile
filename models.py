@@ -8,7 +8,7 @@ class SimpleFCModel(nn.Module):
     """ Simple feedforward network of one single layer"""
 
     def __init__(self, input_size, output_size):
-        super().__init__(self)
+        super(SimpleFCModel, self).__init__()
         self.fc = nn.Linear(in_features=input_size, out_features=output_size)
 
     def forward(self, input):
@@ -18,9 +18,9 @@ class SimpleFCModel(nn.Module):
 
 
 class SimpleDoubleModel(nn.Module):
-    """ Simple feedforward network of one single layer"""
+    """ Simple feedforward network of two fully connected layers"""
 
-    def __init__(self, input_size, hidden_size, output_size):
+    def __init__(self, input_size, hidden_size, output_size=1):
         super().__init__(self)
         self.fc1 = nn.Linear(in_features=input_size, out_features=hidden_size)
         self.fc2 = nn.Linear(in_features=hidden_size, out_features=output_size)
@@ -35,6 +35,18 @@ class SimpleDoubleModel(nn.Module):
 class ConvModel(nn.Module):
     """ """
 
-    def __init__(self, input_size, output_size):
+    def __init__(self, input_size, output_size=1):
         super().__init__(self)
 
+    def forward(self, input):
+        pass
+
+
+class LSTMModel(nn.Module):
+    """ """
+
+    def __init__(self, input_size, output_size=1):
+        pass
+
+    def forward(self, input):
+        pass
