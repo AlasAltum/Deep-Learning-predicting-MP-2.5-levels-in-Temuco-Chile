@@ -36,6 +36,6 @@ data_frames = [temp, mp25]
 df_merged = reduce(lambda  left, right: pd.merge(left, right,
                                                  on=['datetime'],
                                                  how='outer'), data_frames)
-#making multi index
+# making multi index
 df_merged = multi_date(df_merged)
 df_merged.to_csv('data_product_temp_mp25', encoding='utf-8')
