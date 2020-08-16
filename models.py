@@ -19,16 +19,23 @@ class SimpleFCModel(nn.Module):
 
 class SimpleDoubleModel(nn.Module):
     """ Simple feedforward network of two fully connected layers"""
-    def __init__(self, input_size, hidden_size, output_size=1):
+    def __init__(self, input_size, hidden_size, output_size=1, model_name='SimpleDoubleModel'):
         super().__init__()
         self.fc1 = nn.Linear(input_size, hidden_size)
+        self.relu = F.relu
         self.fc2 = nn.Linear(in_features=hidden_size, out_features=output_size)
+        self.name = model_name
 
-    def forward(self, input):
-        hidden_preds = self.fc1(input)
+    def forward(self, _input):
+        hidden_preds = self.relu(self.fc1(_input))
         predictions = self.fc2(hidden_preds)
 
         return predictions
+
+# # Setting model to use and its name
+# modelo_1_temp_pm = SimpleDoubleModel(1, 8, 1, "Temp PM Sequential 2 layers with RELU")
+# model_name = "Temp PM Sequential 2 layers with Relu"
+# loss_1 = nn.MSELoss()
 
 
 class ConvModel(nn.Module):
