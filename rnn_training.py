@@ -8,7 +8,7 @@ from datetime import timedelta
 import warnings
 from preprocessing import get_consecutive
 from sklearn.cluster import KMeans
-from rnn_imports import RNN
+from rnn_imports import RNN, train, test, MP25Dataset
 from sklearn.preprocessing import KBinsDiscretizer
 import sys
 warnings.filterwarnings("ignore")
