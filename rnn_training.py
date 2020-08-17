@@ -59,7 +59,7 @@ rnn1.to(device)
 loss_func1 = torch.nn.MSELoss().to(device)
 opt1 = optim.Adam(rnn1.parameters())
 
-train(rnn1, training_set, opt1, loss_func1, epochs=number_of_epochs, device=device)
+train(rnn1, training_set, opt1, loss_func1, epochs=number_of_epochs)
 
 
 # Parameters for rnn 2
@@ -98,4 +98,4 @@ training_set2 = MP25Dataset2(X_train, y_train, 128, classifier=True)
 test_set2 = MP25Dataset2(X_test, y_test, 128, classifier=True)
 
 # training rnn2
-train(rnn2, training_set2, opt, loss_func, classifier=True, epochs=number_of_epochs, device=device)
+train(rnn2, training_set2, opt, loss_func, classifier=True, epochs=number_of_epochs)

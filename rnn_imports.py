@@ -66,7 +66,8 @@ def test(model, x_test, y_test, loss_function, batch_size=365 * 24):
     return total_loss
 
 
-def train(model, train_set, optimizer, loss_function, device, epochs=5, batch_size=365 * 24, classifier=False):
+def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 * 24, classifier=False):
+    device = ('cuda' if torch.cuda.is_available() else 'cpu')
     model.train()
     total_loss = 0
 
