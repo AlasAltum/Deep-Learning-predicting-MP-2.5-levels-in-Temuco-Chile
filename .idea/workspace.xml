@@ -4,7 +4,6 @@
     <list default="true" id="da5634d3-20be-4f7c-a3c4-2e115647d7cf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rnn_imports.py" beforeDir="false" afterPath="$PROJECT_DIR$/rnn_imports.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rnn_training.py" beforeDir="false" afterPath="$PROJECT_DIR$/rnn_training.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,11 +32,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597621671425</updated>
-      <workItem from="1597621672713" duration="2956000" />
+      <workItem from="1597621672713" duration="4204000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="44" y="-878" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597627708706">
+      <screen x="-380" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="44" y="-878" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800/-380.-1080.1920.1080@-380.-1080.1920.1080" timestamp="1597627708706" />
   </component>
 </project>

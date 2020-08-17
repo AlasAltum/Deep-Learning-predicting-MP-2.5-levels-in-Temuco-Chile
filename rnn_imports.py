@@ -15,6 +15,7 @@ class RNN(nn.Module):
         self.name = name
 
     def forward(self, x):
+        device = ('cuda' if torch.cuda.is_available() else 'cpu')
         h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(device)
 
         # forward
