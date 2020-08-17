@@ -13,7 +13,7 @@ from sklearn.preprocessing import KBinsDiscretizer
 import sys
 warnings.filterwarnings("ignore")
 device = ('cuda' if torch.cuda.is_available() else 'cpu')
-number_of_epochs = sys.argv[1]
+number_of_epochs = int(sys.argv[1])
 
 # abriendo datos
 with open('./data/data_product_02.pk', 'rb') as f:
