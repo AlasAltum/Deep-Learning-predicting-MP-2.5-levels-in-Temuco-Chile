@@ -10,8 +10,10 @@ from preprocessing import get_consecutive
 from sklearn.cluster import KMeans
 from rnn_imports import RNN
 from sklearn.preprocessing import KBinsDiscretizer
+import sys
 warnings.filterwarnings("ignore")
 device = ('cuda' if torch.cuda.is_available() else 'cpu')
+number_of_epochs = sys.argv[1]
 
 # abriendo datos
 with open('./data/data_product_02.pk', 'rb') as f:
@@ -50,14 +52,14 @@ batch_size = 64
 num_epochs = 2
 
 # first rnn
-rnn1 = RNN(input_size, hidden_size, num_layers, 1, 'rnn1')
+rnn1 = RNN(input_size, hidden_size, num_layers, 1, 'rnn1', sequence_len1)
 rnn1.to(device)
 
 # loss function and optimizer for first rnn
 loss_func1 = torch.nn.MSELoss().to(device)
 opt1 = optim.Adam(rnn1.parameters())
 
-train(rnn1, training_set, opt1, loss_func1)
+train(rnn1, training_set, opt1, loss_func1, epochs=number_of_epochs)
 
 
 # Parameters for rnn 2
@@ -69,7 +71,7 @@ learning_rate2 = 0.001
 batch_size2 = 64
 num_epochs2 = 2
 
-rnn2 = RNN(input_size2, hidden_size2, num_layers2, 10, 'rnn2')
+rnn2 = RNN(input_size2, hidden_size2, num_layers2, 10, 'rnn2', sequence_len2)
 rnn2.to(device)
 
 # loss function and optimizer for second rnn
@@ -96,4 +98,4 @@ training_set2 = MP25Dataset2(X_train, y_train, 128, classifier=True)
 test_set2 = MP25Dataset2(X_test, y_test, 128, classifier=True)
 
 # training rnn2
-train(rnn2, training_set2, opt, loss_func, classifier=True)
+train(rnn2, training_set2, opt, loss_func, classifier=True, epochs=number_of_epochs)
