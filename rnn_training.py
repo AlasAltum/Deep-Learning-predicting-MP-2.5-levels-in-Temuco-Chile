@@ -43,13 +43,13 @@ training_set = MP25Dataset(X_train, y_train, 128)
 test_set = MP25Dataset(X_test, y_test, 128)
 
 # parameters for first rnn
-input_size = 6
-sequence_len = 128
-num_layers = 1
-hidden_size = 1000
-learning_rate = 0.001
-batch_size = 64
-num_epochs = 2
+input_size1 = 6
+sequence_len1 = 128
+num_layers1 = 1
+hidden_size1 = 1000
+learning_rate1 = 0.001
+batch_size1 = 64
+num_epochs1 = 2
 
 # first rnn
 rnn1 = RNN(input_size, hidden_size, num_layers, 1, 'rnn1', sequence_len1)
