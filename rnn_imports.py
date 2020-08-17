@@ -1,10 +1,11 @@
 from torch import nn
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
-
+import json
+import torch
 
 class RNN(nn.Module):
-    def __init__(self, input_size, hidden_size, num_layers, num_classes, name):
+    def __init__(self, input_size, hidden_size, num_layers, num_classes, name, sequence_len):
         super(RNN, self).__init__()
         self.hidden_size = hidden_size
         self.num_layers = num_layers
@@ -48,6 +49,10 @@ class MP25Dataset(Dataset):
 def test(model, x_test, y_test, loss_function, batch_size=365 * 24):
     model.eval()
     total_loss = 0
+    loss = {}
+    loss['model_name'] = model.name
+    loss['loss'] = []
+    loss['epoch'] = []
 
     with torch.no_grad():
         for x_i, y_i in zip(x_test, y_test):
@@ -62,6 +67,7 @@ def test(model, x_test, y_test, loss_function, batch_size=365 * 24):
 
 
 def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 * 24, classifier=False):
+    device = ('cuda' if torch.cuda.is_available() else 'cpu')
     model.train()
     total_loss = 0
 
@@ -106,6 +112,11 @@ def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 *
 
         total_loss += epoch_loss
         print(f'epoch: {i} loss: {epoch_loss:10.8f}')
+        loss['epoch'].append(i + 1)
+        loss['loss'].append(epoch_loss)
 
+    with open('{}_training.json'.format(model.name), 'w') as f:
+        json.dump(loss, f)
+    f.close()
     print(f'Average loss: {total_loss / len(train_set):4f}')
     return total_loss
