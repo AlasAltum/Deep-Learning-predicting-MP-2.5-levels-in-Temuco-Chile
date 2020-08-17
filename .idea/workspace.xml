@@ -32,7 +32,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597621671425</updated>
-      <workItem from="1597621672713" duration="5370000" />
+      <workItem from="1597621672713" duration="6382000" />
     </task>
     <servers />
   </component>
@@ -44,5 +44,13 @@
       <screen x="-380" y="-1080" width="1920" height="1080" />
     </state>
     <state x="44" y="-878" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800/-380.-1080.1920.1080@-380.-1080.1920.1080" timestamp="1597627708706" />
+    <state x="287" y="-908" width="586" height="735" key="find.popup" timestamp="1597634276846">
+      <screen x="-380" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="287" y="-908" width="586" height="735" key="find.popup/0.0.1280.800/-380.-1080.1920.1080@-380.-1080.1920.1080" timestamp="1597634276846" />
+    <state x="245" y="-839" width="670" height="676" key="search.everywhere.popup" timestamp="1597634064760">
+      <screen x="-380" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="245" y="-839" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-380.-1080.1920.1080@-380.-1080.1920.1080" timestamp="1597634064760" />
   </component>
 </project>

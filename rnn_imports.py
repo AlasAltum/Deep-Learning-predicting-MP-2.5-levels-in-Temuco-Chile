@@ -83,8 +83,6 @@ def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 *
                 x_i, y_i = train_set[j]
 
                 x_i = x_i.to("cuda").float()
-                x_i = x_i.to("cuda").float()
-                y_i = y_i.to("cuda").float()
                 y_i = y_i.to("cuda").float()
                 optimizer.zero_grad()
                 y_pred = model(x_i)
@@ -99,8 +97,6 @@ def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 *
                 x_i, y_i = train_set[j]
 
                 x_i = x_i.to("cuda").float()
-                x_i = x_i.to("cuda").float()
-                y_i = y_i.to("cuda").float()
                 y_i = y_i.to("cuda").float()
                 optimizer.zero_grad()
                 y_pred = model(x_i)
