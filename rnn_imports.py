@@ -15,8 +15,7 @@ class RNN(nn.Module):
         self.name = name
 
     def forward(self, x):
-        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(device)
-
+        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to("cuda")
         # forward
         out, _ = self.rnn(x, h0)
         out = F.relu(out.reshape(out.shape[0], -1))
@@ -49,10 +48,10 @@ class MP25Dataset(Dataset):
 def test(model, x_test, y_test, loss_function, batch_size=365 * 24):
     model.eval()
     total_loss = 0
-    loss = {}
-    loss['model_name'] = model.name
-    loss['loss'] = []
-    loss['epoch'] = []
+    loss_dict = {}
+    loss_dict['model_name'] = model.name
+    loss_dict['loss'] = []
+    loss_dict['epoch'] = []
 
     with torch.no_grad():
         for x_i, y_i in zip(x_test, y_test):
@@ -67,10 +66,12 @@ def test(model, x_test, y_test, loss_function, batch_size=365 * 24):
 
 
 def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 * 24, classifier=False):
-    device = ('cuda' if torch.cuda.is_available() else 'cpu')
     model.train()
     total_loss = 0
-
+    loss_dict = {}
+    loss_dict['model_name'] = model.name
+    loss_dict['loss'] = []
+    loss_dict['epoch'] = []
     for i in range(epochs):
         # each epoch
         epoch_loss = 0
@@ -81,8 +82,8 @@ def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 *
                 # get the inputs; data is a list of [inputs, labels]
                 x_i, y_i = train_set[j]
 
-                x_i = x_i.to(device).float()
-                y_i = y_i.to(device).float()
+                x_i = x_i.to("cuda").float()
+                y_i = y_i.to("cuda").float()
                 optimizer.zero_grad()
                 y_pred = model(x_i)
 
@@ -95,8 +96,8 @@ def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 *
                 # get the inputs; data is a list of [inputs, labels]
                 x_i, y_i = train_set[j]
 
-                x_i = x_i.to(device).float()
-                y_i = y_i.to(device).float()
+                x_i = x_i.to("cuda").float()
+                y_i = y_i.to("cuda").float()
                 optimizer.zero_grad()
                 y_pred = model(x_i)
 
@@ -112,11 +113,11 @@ def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 *
 
         total_loss += epoch_loss
         print(f'epoch: {i} loss: {epoch_loss:10.8f}')
-        loss['epoch'].append(i + 1)
-        loss['loss'].append(epoch_loss)
+        loss_dict['epoch'].append(i + 1)
+        loss_dict['loss'].append(epoch_loss)
 
     with open('{}_training.json'.format(model.name), 'w') as f:
-        json.dump(loss, f)
+        json.dump(loss_dict, f)
     f.close()
     print(f'Average loss: {total_loss / len(train_set):4f}')
     return total_loss
