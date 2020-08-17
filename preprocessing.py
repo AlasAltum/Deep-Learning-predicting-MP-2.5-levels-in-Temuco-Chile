@@ -1,6 +1,28 @@
 import pandas as pd
 from datetime import date, datetime
 
+
+
+def get_consecutive(df, m):
+    """
+    This function gives a list of dataframes of consecutive indices as in a convolution
+    :param df: dataframe to use
+    :param m: length of the individual slices
+    :return: two lists, one for each individual slice and another for the term just
+    after the slice ends
+    """
+    n = len(df)
+    slices = []
+    out = []
+    for i in range(n - m + 1):
+        slices.append(df.iloc[i: m + i])
+        try:
+            out.append(df.iloc[m + i])
+        except:
+            out.append(None)
+    return slices[:-2], out[:-2]
+
+
 def get_season(date_time):
     """
     This function takes a datetime object and determines the season
