@@ -15,9 +15,7 @@ class RNN(nn.Module):
         self.name = name
 
     def forward(self, x):
-        device = ('cuda' if torch.cuda.is_available() else 'cpu')
-        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(device)
-
+        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to("cuda")
         # forward
         out, _ = self.rnn(x, h0)
         out = F.relu(out.reshape(out.shape[0], -1))
@@ -68,7 +66,6 @@ def test(model, x_test, y_test, loss_function, batch_size=365 * 24):
 
 
 def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 * 24, classifier=False):
-    device = ('cuda' if torch.cuda.is_available() else 'cpu')
     model.train()
     total_loss = 0
 
@@ -82,8 +79,10 @@ def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 *
                 # get the inputs; data is a list of [inputs, labels]
                 x_i, y_i = train_set[j]
 
-                x_i = x_i.to(device).float()
-                y_i = y_i.to(device).float()
+                x_i = x_i.to("cuda").float()
+                x_i = x_i.to("cuda").float()
+                y_i = y_i.to("cuda").float()
+                y_i = y_i.to("cuda").float()
                 optimizer.zero_grad()
                 y_pred = model(x_i)
 
@@ -96,8 +95,10 @@ def train(model, train_set, optimizer, loss_function, epochs=5, batch_size=365 *
                 # get the inputs; data is a list of [inputs, labels]
                 x_i, y_i = train_set[j]
 
-                x_i = x_i.to(device).float()
-                y_i = y_i.to(device).float()
+                x_i = x_i.to("cuda").float()
+                x_i = x_i.to("cuda").float()
+                y_i = y_i.to("cuda").float()
+                y_i = y_i.to("cuda").float()
                 optimizer.zero_grad()
                 y_pred = model(x_i)
 

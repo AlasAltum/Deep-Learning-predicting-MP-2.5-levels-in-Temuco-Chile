@@ -11,8 +11,9 @@ from sklearn.cluster import KMeans
 from rnn_imports import RNN, train, test, MP25Dataset
 from sklearn.preprocessing import KBinsDiscretizer
 import sys
+
+
 warnings.filterwarnings("ignore")
-device = ('cuda' if torch.cuda.is_available() else 'cpu')
 number_of_epochs = int(sys.argv[1])
 
 # abriendo datos
@@ -53,10 +54,10 @@ num_epochs1 = 2
 
 # first rnn
 rnn1 = RNN(input_size1, hidden_size1, num_layers1, 1, 'rnn1', sequence_len1)
-rnn1.to(device)
+rnn1.to("cuda")
 
 # loss function and optimizer for first rnn
-loss_func1 = torch.nn.MSELoss().to(device)
+loss_func1 = torch.nn.MSELoss().to("cuda")
 opt1 = optim.Adam(rnn1.parameters())
 
 train(rnn1, training_set, opt1, loss_func1, epochs=number_of_epochs)
@@ -72,10 +73,10 @@ batch_size2 = 64
 num_epochs2 = 2
 
 rnn2 = RNN(input_size2, hidden_size2, num_layers2, 10, 'rnn2', sequence_len2)
-rnn2.to(device)
+rnn2.to("cuda")
 
 # loss function and optimizer for second rnn
-loss_func = torch.nn.CrossEntropyLoss().to(device)
+loss_func = torch.nn.CrossEntropyLoss().to("cuda")
 opt = optim.Adam(rnn2.parameters())
 
 
