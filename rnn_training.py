@@ -95,8 +95,8 @@ y = [discretizador.transform(i.mp_25.reshape(-1, 1)).toarray() for i in y]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
 # making Datasets for rnn2
-training_set2 = MP25Dataset2(X_train, y_train, 128, classifier=True)
-test_set2 = MP25Dataset2(X_test, y_test, 128, classifier=True)
+training_set2 = MP25Dataset(X_train, y_train, 128, classifier=True)
+test_set2 = MP25Dataset(X_test, y_test, 128, classifier=True)
 
 # training rnn2
 train(rnn2, training_set2, opt, loss_func, classifier=True, epochs=number_of_epochs)
