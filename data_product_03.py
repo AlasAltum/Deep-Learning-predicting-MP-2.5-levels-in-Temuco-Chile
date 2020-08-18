@@ -62,5 +62,5 @@ for df in data:
     y += result[1]
 
 with open('data/data_product_03.pk', 'wb') as f:
-    pickle.dump((X, y), f)gi
+    pickle.dump((X, y), f)
 f.close()
