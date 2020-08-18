@@ -54,6 +54,11 @@ lista_padre_las_casas = get_slices(padre_las_casas, amount)
 lista_las_encinas = get_slices(las_encinas, amount)
 lista_nielol = get_slices(nielol, amount)
 
+mp_25 = {'mp_2,5': 'mp_25'}
+lista_padre_las_casas.rename(mp_25, inplace=True)
+lista_las_encinas.rename(mp_25, inplace=True)
+lista_nielol.rename(mp_25, inplace=True)
+
 lista_padre_las_casas = [i for i in lista_padre_las_casas if len(i) > length]
 lista_las_encinas = [i for i in lista_las_encinas if len(i) > length]
 lista_nielol = [i for i in lista_nielol if len(i) > length]
