@@ -50,14 +50,14 @@ padre_las_casas.drop('Estacion', axis=1, inplace=True)
 las_encinas.drop('Estacion', axis=1, inplace=True)
 nielol.drop('Estacion', axis=1, inplace=True)
 
+mp_25 = {'mp_2,5': 'mp_25'}
+padre_las_casas.rename(columns=mp_25, inplace=True)
+las_encinas.rename(columns=mp_25, inplace=True)
+nielol.rename(columns=mp_25, inplace=True)
+
 lista_padre_las_casas = get_slices(padre_las_casas, amount)
 lista_las_encinas = get_slices(las_encinas, amount)
 lista_nielol = get_slices(nielol, amount)
-
-mp_25 = {'mp_2,5': 'mp_25'}
-lista_padre_las_casas.rename(mp_25, inplace=True)
-lista_las_encinas.rename(mp_25, inplace=True)
-lista_nielol.rename(mp_25, inplace=True)
 
 lista_padre_las_casas = [i for i in lista_padre_las_casas if len(i) > length]
 lista_las_encinas = [i for i in lista_las_encinas if len(i) > length]

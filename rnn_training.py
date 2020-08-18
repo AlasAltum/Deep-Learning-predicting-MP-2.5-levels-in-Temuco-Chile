@@ -22,6 +22,7 @@ f.close()
 
 # splitting the dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
+print(y_train[0])
 y_train = [i.mp_25 for i in y_train]
 y_test = [i.mp_25 for i in y_test]
 
@@ -62,7 +63,6 @@ opt = optim.Adam(rnn2.parameters())
 
 # preparing data for rnn2
 discretizador = KBinsDiscretizer(10)
-mp_25_vectors = discretizador.fit_transform(data[['mp_25']]).toarray()
 
 # making discretization
 for i, x in enumerate(X):

@@ -27,12 +27,8 @@ class MP25Dataset(Dataset):
     """Dataset para el proyecto"""
 
     def __init__(self, X, y, n, classifier=False):
-        if classifier:
-            self.X = [torch.from_numpy(x.values.reshape(1, n, 24)) for x in X]
-            self.y = [torch.from_numpy(i.reshape(-1)) for i in y]
-        else:
-            self.X = [torch.from_numpy(x.values.reshape(1, n, 6)) for x in X]
-            self.y = [torch.from_numpy(i.reshape(-1)) for i in y]
+        self.X = [torch.from_numpy(x.values.reshape(1, n, 7)) for x in X]
+        self.y = [torch.from_numpy(i.reshape(-1)) for i in y]
 
     def __len__(self):
         return len(self.X)
