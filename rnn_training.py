@@ -34,7 +34,7 @@ test_set = MP25Dataset(X_test, y_test, 128)
 input_size1 = 7
 sequence_len1 = 128
 num_layers1 = 2
-hidden_size1 = 1000
+hidden_size1 = 100
 
 # first rnn
 rnn1 = RNN(input_size1, hidden_size1, num_layers1, 1, 'rnn1', sequence_len1)
@@ -51,7 +51,7 @@ train(rnn1, training_set, opt1, loss_func1, epochs=number_of_epochs)
 input_size2 = 7
 sequence_len2 = 128
 num_layers2 = 2
-hidden_size2 = 1000
+hidden_size2 = 100
 
 rnn2 = RNN(input_size2, hidden_size2, num_layers2, 10, 'rnn2', sequence_len2)
 rnn2.to("cuda")
