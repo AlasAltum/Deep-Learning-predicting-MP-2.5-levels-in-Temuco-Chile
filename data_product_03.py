@@ -46,6 +46,10 @@ padre_las_casas.index = pd.to_datetime(padre_las_casas.index)
 las_encinas.index = pd.to_datetime(las_encinas.index)
 nielol.index = pd.to_datetime(nielol.index)
 
+padre_las_casas.drop('Estacion', axis=1, inplace=True)
+las_encinas.drop('Estacion', axis=1, inplace=True)
+nielol.drop('Estacion', axis=1, inplace=True)
+
 lista_padre_las_casas = get_slices(padre_las_casas, amount)
 lista_las_encinas = get_slices(las_encinas, amount)
 lista_nielol = get_slices(nielol, amount)
